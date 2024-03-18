@@ -6,14 +6,11 @@ import "./AgeVerifier.css";
 
 const AgeVerifier = () => {
   const [underageAlert, setUnderAgeAlert] = useState(false);
+  const [redirectAlert, setRedirectAlert] = useState(false);
 
   const handleCloseAlert = () => {
     setUnderAgeAlert(false);
-  };
-
-  const DPChange = (input) => {
-    const dob = new Date(input);
-    console.log(dob);
+    setRedirectAlert(false);
   };
 
   const DPSubmit = (input) => {
@@ -25,8 +22,8 @@ const AgeVerifier = () => {
     if (monthDiff < 0 || (monthDiff === 0 && today.getDate() > dob.getDate())) {
       age -= 1;
     }
-
-    if (age >= 18) {
+    if (age >= 15) {
+      setRedirectAlert(true);
       setTimeout(() => {
         window.location.href = "https://www.google.com";
       }, 3000);
@@ -48,6 +45,11 @@ const AgeVerifier = () => {
             <strong>Underage Warning</strong>
             <br />
             You are not old enough to access "www.google.com"
+          </Alert>
+        )}
+        {redirectAlert && (
+          <Alert severity="success" onClose={handleCloseAlert}>
+            <strong>Redirecting ... </strong>
           </Alert>
         )}
       </div>
