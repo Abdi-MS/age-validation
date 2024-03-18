@@ -1,0 +1,22 @@
+.DPWrapper {
+  width: 500px;
+  height: 500px;
+}
+
+body {
+  padding-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.outter-wrapper {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h2 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
